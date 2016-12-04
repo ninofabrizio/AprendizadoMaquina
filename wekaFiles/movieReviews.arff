@@ -1,0 +1,3 @@
+@relation "Movie Reviews"
+
+@attribute evaluation {POSITIVE, NEGATIVE}
