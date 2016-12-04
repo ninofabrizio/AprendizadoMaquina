@@ -9,8 +9,8 @@ Nino Fabrizio Tiriticco Lizardo (matr√≠cula: 1113203)
 
 -----------------------------------------------------
 
-# ATEN«√O!!!!
-O Arquivo .arff padr„o È sempre reescrito quando o Java È executado. … recomand·vel guardar uma cÛpia deste, se existir, antes de rodar o cÛdigo. 
-Os arquivos de texto sÛ s„o gerados quando n„o se encontram no respectivo diretÛrio. Se existem, s„o apenas lidos.
+# ATEN√á√ÉO!!!!
+O Arquivo .arff padr√£o √© sempre reescrito quando o Java √© executado. √â recomand√°vel guardar uma c√≥pia deste, se existir, antes de rodar o c√≥digo. 
+Os arquivos de texto s√≥ s√£o gerados quando n√£o se encontram no respectivo diret√≥rio. Se existem, s√£o apenas lidos.
 
 Obs.: O diret√≥rio "movie_review_dataset" precisa estar na pasta do projeto para executar a main com sucesso.
