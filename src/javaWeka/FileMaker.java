@@ -13,6 +13,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.TreeMap;
 
 import wordTreating.StrikeAMatch;
 
@@ -52,7 +53,8 @@ public class FileMaker {
 				break;
 		}
 		
-		if(i == 5) {
+		// Score of 5 is not included, score 11 doesn't exist...
+		if(i == 5 || i == 11) {
 			System.err.println("File not found: " + filePath);
 			System.exit(1);
 		}
@@ -78,7 +80,7 @@ public class FileMaker {
 			if(!file.exists())
 				file.createNewFile();
 			
-			pw = new PrintWriter(file);
+			pw = new PrintWriter(new FileWriter(file, true));
 			
 			pw.print(line);
 			
@@ -96,13 +98,11 @@ public class FileMaker {
 		BufferedReader br = readDataFile("textFiles/englishStopwords.txt");
 		
 		try {
-			for(int i = 1; i <= 667; i++) {
-			
-				String line = br.readLine();
+			for(String line = br.readLine(); line != null; line = br.readLine())
 				words.add(line);
-			}
 			
 			br.close();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -113,7 +113,7 @@ public class FileMaker {
 	private static Map<String, String> extractReviews() {
 		
 		File file = new File("textFiles/reviews.txt");
-		Map<String, String> reviewMap = new HashMap<String, String>();
+		Map<String, String> reviewMap = new TreeMap<String, String>();
 		
 		if(!file.exists()) {
 			
@@ -211,8 +211,8 @@ public class FileMaker {
 	private static Map<String, String> extractWords(Map<String, String> reviewMap) {
 		
 		List<String> stopWords = getStopWords();
-		Map<String, Integer> goodWords = new HashMap<String, Integer>();
-		Map<String, Integer> badWords = new HashMap<String, Integer>();
+		Map<String, Integer> goodWords = new TreeMap<String, Integer>();
+		Map<String, Integer> badWords = new TreeMap<String, Integer>();
 		
 		// TODO Similarity (changeable)
 		double permitedSimilarity = 0.5;
@@ -328,11 +328,12 @@ public class FileMaker {
 	// Returns the map with the "best" words to use as attributes
 	private static Map<String, String> createFinalMap(Map<String, Integer> goodWords, Map<String, Integer> badWords, double permitedSimilarity) {
 		
-		Map<String, String> map = new HashMap<String, String>();
+		Map<String, String> map = new TreeMap<String, String>();
 		
 		// TODO Frequency (changeable)
 		int frequencypermited = 5000;
 		
+		System.out.println("Selecting \"POSITIVE\" final words");
 		Iterator<Entry<String, Integer>> iterator = goodWords.entrySet().iterator();
 		while(iterator.hasNext()) {
 		
@@ -347,6 +348,7 @@ public class FileMaker {
 		}
 		
 		if(!badWords.isEmpty()) {
+			System.out.println("Selecting \"NEGATIVE\" final words");
 			iterator = badWords.entrySet().iterator();
 			while(iterator.hasNext()) {
 		
@@ -357,7 +359,7 @@ public class FileMaker {
 					&& entry.getValue() >= frequencypermited) {
 					
 						map.put(entry.getKey(), "NEGATIVE");
-					}
+				}
 			}
 		}
 		
@@ -452,10 +454,44 @@ public class FileMaker {
 		}
 	}
 	
+	// Returns a list of the frequency a word has for each review (so the list is of size 50k :O)
+	private static List<Integer> getWordFrequency(String selectedWord, Map<String, String> reviewMap) {
+		
+		List<Integer> list = new ArrayList<Integer>();
+		
+		// TODO Similarity final word frequency (changeable)
+		double permitedSimilarity = 0.5;
+		
+		Iterator<Entry<String, String>> iterator = reviewMap.entrySet().iterator();
+		while(iterator.hasNext()) {
+			
+			int count = 0;
+			
+			Entry<String, String> entry = iterator.next();
+			
+			String[] reviewWords = entry.getKey().split(" ");
+			
+			for(String word : reviewWords) {
+				
+				// Desperation below...
+				if(word.isEmpty() || word.length() == 0 || word.length() == 1
+					|| word.length() == 2 || word.contains(" ") || word.contains("\\s"))
+					continue;
+				
+				if(StrikeAMatch.compareStrings(selectedWord, word) >= permitedSimilarity)
+					count++;
+			}
+			
+			list.add(count);
+		}
+		
+		return list;
+	}
+	
 	public static void main(String[] args) throws Exception {
 		
-		writeOnWekaFile("@relation \"Movie Reviews\"\n\n@attribute evaluation {POSITIVE, NEGATIVE}");
-		int goodQuantity = 0, badQuantity = 0;
+		writeOnWekaFile("@relation \"Movie Reviews\"\n\n");
+		int goodQuantity = 0, badQuantity = 0, wordNum = 1;
 		
 		if(redoFile)
 			redoFile = false;
@@ -465,8 +501,9 @@ public class FileMaker {
 		// This map contains the universe of words (Key == word && Value == Classification)
 		Map<String, String> processedWords = extractWords(reviewMap);
 		
-		Iterator<Entry<String, String>> iterator = processedWords.entrySet().iterator();
+		Map<String, List<Integer>> wordFrequencyMap = new HashMap<String, List<Integer>>();
 		
+		Iterator<Entry<String, String>> iterator = processedWords.entrySet().iterator();
 		while(iterator.hasNext()) {
 		
 			Entry<String, String> entry = iterator.next();
@@ -480,11 +517,53 @@ public class FileMaker {
 				goodQuantity++;
 			else
 				badQuantity++;
+			
+			String line = new String("@attribute word").concat(Integer.toString(wordNum));
+			line = line.concat(" numeric\n");
+			
+			writeOnWekaFile(line);
+			
+			wordNum++;
+			
+			 List<Integer> wordFrequency = getWordFrequency(entry.getKey(), reviewMap);
+			 
+			 wordFrequencyMap.put(entry.getKey(), wordFrequency);
 		}
 		
 		System.out.println("Total: " + processedWords.size());
 		System.out.println("Good words: " + goodQuantity);
 		System.out.println("Bad words: " + badQuantity);
+		
+		writeOnWekaFile("@attribute evaluation {POSITIVE, NEGATIVE}\n\n@data\n");
+		
+		int review = 0;
+		
+		iterator = reviewMap.entrySet().iterator();
+		while(iterator.hasNext()) {
+			
+			Entry<String, String> entry = iterator.next();
+			
+			String line = new String();
+			
+			Iterator<Entry<String, List<Integer>>> freqIterator = wordFrequencyMap.entrySet().iterator();
+			while(freqIterator.hasNext()) {
+			
+				Entry<String, List<Integer>> freqEntry = freqIterator.next();
+				
+				line = line.concat(Integer.toString(freqEntry.getValue().get(review)));
+				line = line.concat(",");
+			}
+			
+			line = line.concat(entry.getValue());
+			
+			if(iterator.hasNext())
+				line = line.concat("\n");
+			
+			writeOnWekaFile(line);
+			
+			System.out.println("Wrote data line " + (review + 1));
+			review++;
+		}
 		
 		/*for(int i = 0; i < 4 ; i++) {
 			
@@ -531,7 +610,7 @@ public class FileMaker {
 					line = line.concat("POSITIVE");
 				
 				System.out.println(filePath);
-				//writeOnFile(line);
+				//writeOnWekaFile(line);
 			}
 		}*/
  
