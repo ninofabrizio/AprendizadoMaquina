@@ -155,12 +155,13 @@ public class FileMaker {
 						String line = dataFile.readLine();
 
 						line = line.toLowerCase();
-						line = line.replaceAll("[^a-z\\s]", " ");
+						line = line.replaceAll("[^a-z\\s\']", " ");
+						line = line.replaceAll("[\']", "");
 					
 						// Getting rid of extra spaces (two times because some "survive" in the first)
 						line = line.trim().replaceAll(" +", " ");
 						line = line.trim().replaceAll("\\s\\s", " ");
-					
+						
 						line = line.concat("@"); // My separator reference for the split
 						line = line.concat(classification);
 						
@@ -502,16 +503,32 @@ public class FileMaker {
 		Map<String, String> processedWords = extractWords(reviewMap);
 		
 		Map<String, List<Integer>> wordFrequencyMap = new HashMap<String, List<Integer>>();
+		List<String> toRemove = new ArrayList<String>();
 		
 		Iterator<Entry<String, String>> iterator = processedWords.entrySet().iterator();
 		while(iterator.hasNext()) {
 		
 			Entry<String, String> entry = iterator.next();
 			
-			if(iterator.hasNext())
-				System.out.println("\"" + entry.getKey()+ "\" - \"" + entry.getValue() + "\"");
-			else
-				System.out.println("\"" + entry.getKey() + "\" - \"" + entry.getValue() + "\"");
+			List<Integer> wordFrequency = getWordFrequency(entry.getKey(), reviewMap);
+			
+			int cont = 0;
+			
+			for(int i = 0; i < wordFrequency.size(); i++)
+				if(wordFrequency.get(i) == 0)
+					cont++;
+			
+			// Removing words with too many zeroes as frequency
+			if((double)cont/(double)wordFrequency.size() >= 0.7) {
+				
+				System.out.println("Removing final word \"" + entry.getKey() + "\"");
+				toRemove.add(entry.getKey());
+				continue;
+			}
+			
+			wordFrequencyMap.put(entry.getKey(), wordFrequency);
+			
+			System.out.println("Added word \"" + entry.getKey()+ "\" - \"" + entry.getValue() + "\"");
 			
 			if(entry.getValue().contains("POS"))
 				goodQuantity++;
@@ -524,15 +541,10 @@ public class FileMaker {
 			writeOnWekaFile(line);
 			
 			wordNum++;
-			
-			 List<Integer> wordFrequency = getWordFrequency(entry.getKey(), reviewMap);
-			 
-			 wordFrequencyMap.put(entry.getKey(), wordFrequency);
 		}
 		
-		System.out.println("Total: " + processedWords.size());
-		System.out.println("Good words: " + goodQuantity);
-		System.out.println("Bad words: " + badQuantity);
+		for(int i = 0; i < toRemove.size(); i++)
+			processedWords.remove(toRemove.get(i));
 		
 		writeOnWekaFile("@attribute evaluation {POSITIVE, NEGATIVE}\n\n@data\n");
 		
@@ -565,73 +577,9 @@ public class FileMaker {
 			review++;
 		}
 		
-		/*for(int i = 0; i < 4 ; i++) {
-			
-			if(i%2 == 0)
-				secondDirectory = new String("neg/");
-			else if(i%2 != 0)
-				secondDirectory = new String("pos/");
-			
-			if(i == 2)
-				firstDirectory = new String("movie_review_dataset/part2/");
-			
-			for(int j = 0; j < 12500; j++) {
-				
-				String filePath = firstDirectory.concat(secondDirectory);
-				filePath = filePath.concat(Integer.toString(j));
-				filePath = filePath.concat("_");
-				
-				filePath = getFilePath(filePath);
-				
-				dataFile = readDataFile(filePath);
-				
-				String line = dataFile.readLine();
-				
-				/*int endLine = line.indexOf('.');
-				if(endLine == -1)
-					endLine = line.indexOf('!');
-				if(endLine == -1)
-					endLine = line.indexOf('?');
-				if(endLine == -1)
-					endLine = line.indexOf(';');
-				if(endLine == -1)
-					endLine = line.length();
-				line = line.substring(0, endLine);
-				
-				line = line.replaceAll("[^a-zA-Z\\s\\']","");
-				String words[] = line.split(" ");
-				
-				line = new String("\"").concat(line);
-				line = line.concat("\",");
-				
-				if(secondDirectory.contains("neg"))
-					line = line.concat("NEGATIVE");
-				else if(secondDirectory.contains("pos"))
-					line = line.concat("POSITIVE");
-				
-				System.out.println(filePath);
-				//writeOnWekaFile(line);
-			}
-		}*/
- 
-		/*Instances data = new Instances(dataFile);
-		data.setClassIndex(data.numAttributes() - 1);
- 
-		//do not use first and second
-		Instance first = data.instance(0);
-		Instance second = data.instance(1);
-		Instance third = data.instance(2);
-		data.delete(0);
-		data.delete(1);
-		data.delete(2);
- 
-		Classifier smo = new SMO();		
-		smo.buildClassifier(data);
- 
-		double class1 = smo.classifyInstance(first);
-		double class2 = smo.classifyInstance(second);
-		double class3 = smo.classifyInstance(third);
- 
-		System.out.println("first: " + class1 + "\nsecond: " + class2 + "\nthird: " + class3);*/
+		System.out.println("Total: " + processedWords.size());
+		System.out.println("Good words: " + goodQuantity);
+		System.out.println("Bad words: " + badQuantity);
+		System.out.println("Program finished!");
 	}
 }
