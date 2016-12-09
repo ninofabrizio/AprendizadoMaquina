@@ -1,0 +1,537 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -V -1 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007" -calibrator "weka.classifiers.functions.Logistic -R 1.0E-8 -M -1 -num-decimal-places 4"
+Relation:     Movie Reviews
+Instances:    49579
+Attributes:   480
+              [list of attributes omitted]
+Test mode:    split 90.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+SMO
+
+Kernel used:
+  Linear Kernel: K(x,y) = <x,y>
+
+Classifier for classes: POSITIVE, NEGATIVE
+
+BinarySMO
+
+Machine linear: showing attribute weights, not support vectors.
+
+        -1.5119 * (normalized) word1
+ +       1.3149 * (normalized) word2
+ +      -0.1462 * (normalized) word3
+ +       2.2191 * (normalized) word4
+ +       1.6322 * (normalized) word5
+ +       0.6221 * (normalized) word6
+ +      -0.9684 * (normalized) word7
+ +      -1.5535 * (normalized) word8
+ +      -0.5661 * (normalized) word9
+ +      -0.4234 * (normalized) word10
+ +       4.1919 * (normalized) word11
+ +      -0.7705 * (normalized) word12
+ +       0.8118 * (normalized) word13
+ +       1.1858 * (normalized) word14
+ +       0.6239 * (normalized) word15
+ +      -1.5954 * (normalized) word16
+ +       0.918  * (normalized) word17
+ +       4.2496 * (normalized) word18
+ +       1.2376 * (normalized) word19
+ +       0.1066 * (normalized) word20
+ +       0.0304 * (normalized) word21
+ +      -0.8046 * (normalized) word22
+ +       2.0155 * (normalized) word23
+ +       3.1495 * (normalized) word24
+ +      -1.3238 * (normalized) word25
+ +      -0.5939 * (normalized) word26
+ +      -0.3507 * (normalized) word27
+ +       1.1546 * (normalized) word28
+ +      -0.7294 * (normalized) word29
+ +      -0.9427 * (normalized) word30
+ +       0.199  * (normalized) word31
+ +       1.9116 * (normalized) word32
+ +      -2.6418 * (normalized) word33
+ +      -0.1982 * (normalized) word34
+ +       0.0935 * (normalized) word35
+ +      -0.4723 * (normalized) word36
+ +       0.1507 * (normalized) word37
+ +       0.1583 * (normalized) word38
+ +       0.9081 * (normalized) word39
+ +       0.0978 * (normalized) word40
+ +       1.7549 * (normalized) word41
+ +      -1.5214 * (normalized) word42
+ +       1.7855 * (normalized) word43
+ +       0.0566 * (normalized) word44
+ +       1.3311 * (normalized) word45
+ +       0.2951 * (normalized) word46
+ +       2.2183 * (normalized) word47
+ +      -1.0167 * (normalized) word48
+ +      -5.732  * (normalized) word49
+ +      -1.2136 * (normalized) word50
+ +       0.058  * (normalized) word51
+ +       0.4061 * (normalized) word52
+ +      -0.9308 * (normalized) word53
+ +      -0.2898 * (normalized) word54
+ +      -0.1566 * (normalized) word55
+ +       2.4322 * (normalized) word56
+ +       0.3792 * (normalized) word57
+ +      -1.3781 * (normalized) word58
+ +      -1.5956 * (normalized) word59
+ +       0.4053 * (normalized) word60
+ +       1.3936 * (normalized) word61
+ +       0.4748 * (normalized) word62
+ +       0.2416 * (normalized) word63
+ +       0.0302 * (normalized) word64
+ +       0.0656 * (normalized) word65
+ +       0.2502 * (normalized) word66
+ +       0.9161 * (normalized) word67
+ +       1.0633 * (normalized) word68
+ +       0.7205 * (normalized) word69
+ +      -0.622  * (normalized) word70
+ +       0.6345 * (normalized) word71
+ +       0.3594 * (normalized) word72
+ +       1.2332 * (normalized) word73
+ +       2.2906 * (normalized) word74
+ +       0.2786 * (normalized) word75
+ +      -0.3233 * (normalized) word76
+ +      -0.3548 * (normalized) word77
+ +       0.3034 * (normalized) word78
+ +       0.62   * (normalized) word79
+ +       0.4979 * (normalized) word80
+ +       0.3941 * (normalized) word81
+ +      -0.8673 * (normalized) word82
+ +       0.0592 * (normalized) word83
+ +      -1.4684 * (normalized) word84
+ +       2.426  * (normalized) word85
+ +      -0.6556 * (normalized) word86
+ +       1.3141 * (normalized) word87
+ +      -0.6493 * (normalized) word88
+ +       2.1605 * (normalized) word89
+ +       2.0955 * (normalized) word90
+ +       1.7004 * (normalized) word91
+ +      -0.9487 * (normalized) word92
+ +       0.8657 * (normalized) word93
+ +       6.2996 * (normalized) word94
+ +       0.032  * (normalized) word95
+ +       0.3877 * (normalized) word96
+ +      -0.3177 * (normalized) word97
+ +      -0.6083 * (normalized) word98
+ +       8.3046 * (normalized) word99
+ +       3.5099 * (normalized) word100
+ +      -0.1515 * (normalized) word101
+ +      -0.5308 * (normalized) word102
+ +       0.1431 * (normalized) word103
+ +      -3.2441 * (normalized) word104
+ +       0.0416 * (normalized) word105
+ +       0.1527 * (normalized) word106
+ +       0.684  * (normalized) word107
+ +       0.3324 * (normalized) word108
+ +      -0.3811 * (normalized) word109
+ +       2.3666 * (normalized) word110
+ +      -3.8189 * (normalized) word111
+ +       0.883  * (normalized) word112
+ +      -1.6349 * (normalized) word113
+ +       2.1835 * (normalized) word114
+ +       2.7345 * (normalized) word115
+ +      -1.149  * (normalized) word116
+ +       0.2109 * (normalized) word117
+ +       1.2214 * (normalized) word118
+ +      -1.6091 * (normalized) word119
+ +      -0.8883 * (normalized) word120
+ +       1.4499 * (normalized) word121
+ +       4.0409 * (normalized) word122
+ +       0.7889 * (normalized) word123
+ +       0.9435 * (normalized) word124
+ +      -2.6388 * (normalized) word125
+ +      -1.3011 * (normalized) word126
+ +       1.1569 * (normalized) word127
+ +       0.3943 * (normalized) word128
+ +      -0.5093 * (normalized) word129
+ +       0.4814 * (normalized) word130
+ +       1.8387 * (normalized) word131
+ +      -0.075  * (normalized) word132
+ +       0.1529 * (normalized) word133
+ +      -2.7661 * (normalized) word134
+ +      -3.1643 * (normalized) word135
+ +       0.0777 * (normalized) word136
+ +      -0.1174 * (normalized) word137
+ +      -0.6225 * (normalized) word138
+ +      -0.3874 * (normalized) word139
+ +       0.8036 * (normalized) word140
+ +      -0.7535 * (normalized) word141
+ +       0.1864 * (normalized) word142
+ +       0.0258 * (normalized) word143
+ +      -0.9892 * (normalized) word144
+ +      -0.6881 * (normalized) word145
+ +       1.0887 * (normalized) word146
+ +      -1.6329 * (normalized) word147
+ +       1.3453 * (normalized) word148
+ +      -1.2418 * (normalized) word149
+ +      -0.4605 * (normalized) word150
+ +       0.155  * (normalized) word151
+ +      -0.5601 * (normalized) word152
+ +      -1.1087 * (normalized) word153
+ +       2.0917 * (normalized) word154
+ +      -1.4949 * (normalized) word155
+ +       0.1719 * (normalized) word156
+ +      -0.3252 * (normalized) word157
+ +      -0.1153 * (normalized) word158
+ +       3.2883 * (normalized) word159
+ +      -0.1311 * (normalized) word160
+ +      -1.4181 * (normalized) word161
+ +      -1.2347 * (normalized) word162
+ +      -2.0277 * (normalized) word163
+ +      -0.9295 * (normalized) word164
+ +      -1.26   * (normalized) word165
+ +       1.122  * (normalized) word166
+ +      -1.4537 * (normalized) word167
+ +       0.1478 * (normalized) word168
+ +       0.319  * (normalized) word169
+ +      -1.0022 * (normalized) word170
+ +       3.3521 * (normalized) word171
+ +       2.3809 * (normalized) word172
+ +      -0.6841 * (normalized) word173
+ +      -0.7613 * (normalized) word174
+ +      -2.8427 * (normalized) word175
+ +      -1.4079 * (normalized) word176
+ +       1.7677 * (normalized) word177
+ +       0.5581 * (normalized) word178
+ +       0.567  * (normalized) word179
+ +       3.2043 * (normalized) word180
+ +      -0.5689 * (normalized) word181
+ +       1.0479 * (normalized) word182
+ +       1.2456 * (normalized) word183
+ +      -0.3386 * (normalized) word184
+ +      -1.5422 * (normalized) word185
+ +       0.9442 * (normalized) word186
+ +       2.0432 * (normalized) word187
+ +      -0.928  * (normalized) word188
+ +      -0.0204 * (normalized) word189
+ +       3.7137 * (normalized) word190
+ +       0.285  * (normalized) word191
+ +      -1.0378 * (normalized) word192
+ +       2.2203 * (normalized) word193
+ +       1.4402 * (normalized) word194
+ +       0.7074 * (normalized) word195
+ +      -2.1617 * (normalized) word196
+ +      -1.3551 * (normalized) word197
+ +       1.6588 * (normalized) word198
+ +      -1.6128 * (normalized) word199
+ +      -0.8642 * (normalized) word200
+ +       0.2843 * (normalized) word201
+ +      -0.6971 * (normalized) word202
+ +      -0.2887 * (normalized) word203
+ +      -3.7664 * (normalized) word204
+ +       0.4831 * (normalized) word205
+ +       0.3855 * (normalized) word206
+ +       1.2348 * (normalized) word207
+ +       1.2804 * (normalized) word208
+ +       0.406  * (normalized) word209
+ +       0.4097 * (normalized) word210
+ +       2.7804 * (normalized) word211
+ +      -0.4496 * (normalized) word212
+ +      -0.1458 * (normalized) word213
+ +      -2.0108 * (normalized) word214
+ +       0.4094 * (normalized) word215
+ +      -1.3812 * (normalized) word216
+ +      -1.8308 * (normalized) word217
+ +      -1.2692 * (normalized) word218
+ +      -1.3018 * (normalized) word219
+ +       0.6224 * (normalized) word220
+ +      -0.3052 * (normalized) word221
+ +       0.0793 * (normalized) word222
+ +       2.7269 * (normalized) word223
+ +      -1.2288 * (normalized) word224
+ +       0.2175 * (normalized) word225
+ +      -0.9645 * (normalized) word226
+ +      -0.0555 * (normalized) word227
+ +      -0.654  * (normalized) word228
+ +       0.687  * (normalized) word229
+ +      -0.8906 * (normalized) word230
+ +      -1.9896 * (normalized) word231
+ +      -0.2333 * (normalized) word232
+ +       2.343  * (normalized) word233
+ +      -0.3566 * (normalized) word234
+ +      -0.7884 * (normalized) word235
+ +      -1.0367 * (normalized) word236
+ +       0.4507 * (normalized) word237
+ +      -0.3786 * (normalized) word238
+ +      -0.5808 * (normalized) word239
+ +       1.1143 * (normalized) word240
+ +      -2.6455 * (normalized) word241
+ +       4.242  * (normalized) word242
+ +       1.893  * (normalized) word243
+ +      -0.9414 * (normalized) word244
+ +      -0.0976 * (normalized) word245
+ +      -0.6199 * (normalized) word246
+ +       1.0202 * (normalized) word247
+ +       0.0415 * (normalized) word248
+ +       0.8771 * (normalized) word249
+ +       0.7591 * (normalized) word250
+ +       2.6734 * (normalized) word251
+ +       0.7088 * (normalized) word252
+ +      -1.0844 * (normalized) word253
+ +      -1.5387 * (normalized) word254
+ +       0.3859 * (normalized) word255
+ +       1.1011 * (normalized) word256
+ +      -1.0471 * (normalized) word257
+ +       0.1202 * (normalized) word258
+ +       2.0377 * (normalized) word259
+ +       0.8447 * (normalized) word260
+ +       1.0401 * (normalized) word261
+ +       0.6313 * (normalized) word262
+ +       0.0859 * (normalized) word263
+ +      -0.2256 * (normalized) word264
+ +       0.1146 * (normalized) word265
+ +      -0.8862 * (normalized) word266
+ +       2.2754 * (normalized) word267
+ +      -1.49   * (normalized) word268
+ +      -1.2395 * (normalized) word269
+ +       1.5703 * (normalized) word270
+ +      -0.6525 * (normalized) word271
+ +      -2.7164 * (normalized) word272
+ +       1.0456 * (normalized) word273
+ +       0.7194 * (normalized) word274
+ +      -0.2906 * (normalized) word275
+ +       1.7755 * (normalized) word276
+ +      -2.4882 * (normalized) word277
+ +       1.2607 * (normalized) word278
+ +       1.6186 * (normalized) word279
+ +      -1.1936 * (normalized) word280
+ +       0.8724 * (normalized) word281
+ +      -0.4733 * (normalized) word282
+ +      -0.5939 * (normalized) word283
+ +       2.4896 * (normalized) word284
+ +       0.7549 * (normalized) word285
+ +       0.4747 * (normalized) word286
+ +      -1.3401 * (normalized) word287
+ +      -0.3767 * (normalized) word288
+ +       1.1309 * (normalized) word289
+ +      -1.1833 * (normalized) word290
+ +       1.3707 * (normalized) word291
+ +      -0.1459 * (normalized) word292
+ +       0.5619 * (normalized) word293
+ +       0.4476 * (normalized) word294
+ +       1.3524 * (normalized) word295
+ +      -1.0225 * (normalized) word296
+ +       0.7782 * (normalized) word297
+ +       0.106  * (normalized) word298
+ +      -0.5288 * (normalized) word299
+ +      -0.7887 * (normalized) word300
+ +      -0.7018 * (normalized) word301
+ +       0.9398 * (normalized) word302
+ +       0.1872 * (normalized) word303
+ +      -2.6882 * (normalized) word304
+ +      -1.2685 * (normalized) word305
+ +       0.6927 * (normalized) word306
+ +      -0.2105 * (normalized) word307
+ +      -1.2117 * (normalized) word308
+ +      -1.2421 * (normalized) word309
+ +       1.339  * (normalized) word310
+ +      -1.7397 * (normalized) word311
+ +      -0.5424 * (normalized) word312
+ +       1.8492 * (normalized) word313
+ +      -0.4407 * (normalized) word314
+ +      -4.8709 * (normalized) word315
+ +       0.5603 * (normalized) word316
+ +       4.2673 * (normalized) word317
+ +      -3.1848 * (normalized) word318
+ +       1.8036 * (normalized) word319
+ +      -0.4215 * (normalized) word320
+ +       1.3097 * (normalized) word321
+ +      -1.0727 * (normalized) word322
+ +      -0.5323 * (normalized) word323
+ +      -0.4347 * (normalized) word324
+ +       2.3943 * (normalized) word325
+ +      -3.8711 * (normalized) word326
+ +      -0.3504 * (normalized) word327
+ +       0.6271 * (normalized) word328
+ +       2.0084 * (normalized) word329
+ +       0.1824 * (normalized) word330
+ +      -1.3696 * (normalized) word331
+ +       0.5097 * (normalized) word332
+ +      -2.4968 * (normalized) word333
+ +      -0.7074 * (normalized) word334
+ +       1.4013 * (normalized) word335
+ +      -0.0857 * (normalized) word336
+ +      -1.3237 * (normalized) word337
+ +      -3.7151 * (normalized) word338
+ +       0.4157 * (normalized) word339
+ +       1.923  * (normalized) word340
+ +      -0.4554 * (normalized) word341
+ +      -0.3057 * (normalized) word342
+ +       0.8401 * (normalized) word343
+ +      -0.6222 * (normalized) word344
+ +      -1.8152 * (normalized) word345
+ +       0.4255 * (normalized) word346
+ +      -1.8564 * (normalized) word347
+ +       0.8769 * (normalized) word348
+ +       1.1396 * (normalized) word349
+ +      -0.0429 * (normalized) word350
+ +      -0.3986 * (normalized) word351
+ +       0.304  * (normalized) word352
+ +      -2.0254 * (normalized) word353
+ +       1.3056 * (normalized) word354
+ +       1.2108 * (normalized) word355
+ +       0.1835 * (normalized) word356
+ +      -2.1047 * (normalized) word357
+ +      -2.5117 * (normalized) word358
+ +      -0.4345 * (normalized) word359
+ +       0.0095 * (normalized) word360
+ +       1.0034 * (normalized) word361
+ +      -0.2521 * (normalized) word362
+ +      -0.8462 * (normalized) word363
+ +       1.3105 * (normalized) word364
+ +       0.6081 * (normalized) word365
+ +      -2.3289 * (normalized) word366
+ +       0.8612 * (normalized) word367
+ +      -0.9507 * (normalized) word368
+ +       3.6311 * (normalized) word369
+ +       1.1271 * (normalized) word370
+ +      -0.3437 * (normalized) word371
+ +       1.2851 * (normalized) word372
+ +       0.6453 * (normalized) word373
+ +      -0.8093 * (normalized) word374
+ +      -3.115  * (normalized) word375
+ +      -2.4202 * (normalized) word376
+ +       0.9397 * (normalized) word377
+ +      -0.6541 * (normalized) word378
+ +       0.5449 * (normalized) word379
+ +      -0.8966 * (normalized) word380
+ +      -0.4115 * (normalized) word381
+ +      -0.9882 * (normalized) word382
+ +      -0.1202 * (normalized) word383
+ +      -0.4893 * (normalized) word384
+ +      -1.8306 * (normalized) word385
+ +      -0.2926 * (normalized) word386
+ +      -0.4043 * (normalized) word387
+ +      -1.3289 * (normalized) word388
+ +       0.2529 * (normalized) word389
+ +      -0.6459 * (normalized) word390
+ +       0.2488 * (normalized) word391
+ +       1.5029 * (normalized) word392
+ +       1.6458 * (normalized) word393
+ +      -2.4682 * (normalized) word394
+ +       0.063  * (normalized) word395
+ +      -1.0683 * (normalized) word396
+ +      -0.6779 * (normalized) word397
+ +      -0.755  * (normalized) word398
+ +      -2.7621 * (normalized) word399
+ +      -0.9537 * (normalized) word400
+ +       1.4669 * (normalized) word401
+ +       1.7447 * (normalized) word402
+ +       0.1826 * (normalized) word403
+ +       0.9    * (normalized) word404
+ +      -0.9463 * (normalized) word405
+ +      -0.2909 * (normalized) word406
+ +      -0.6663 * (normalized) word407
+ +       0.0541 * (normalized) word408
+ +       1.1131 * (normalized) word409
+ +      -0.6488 * (normalized) word410
+ +       1.2043 * (normalized) word411
+ +      -1.3717 * (normalized) word412
+ +       2.0142 * (normalized) word413
+ +       1.1945 * (normalized) word414
+ +      -0.3858 * (normalized) word415
+ +      -0.7823 * (normalized) word416
+ +      -0.5629 * (normalized) word417
+ +      -1.4399 * (normalized) word418
+ +       2.403  * (normalized) word419
+ +      -1.6593 * (normalized) word420
+ +      -5.7597 * (normalized) word421
+ +       0.5368 * (normalized) word422
+ +      -1.05   * (normalized) word423
+ +       0.4116 * (normalized) word424
+ +      -0.2918 * (normalized) word425
+ +       0.3839 * (normalized) word426
+ +       0.5358 * (normalized) word427
+ +       2.5216 * (normalized) word428
+ +       2.0577 * (normalized) word429
+ +       2.8364 * (normalized) word430
+ +      -1.8244 * (normalized) word431
+ +       0.7021 * (normalized) word432
+ +       0.532  * (normalized) word433
+ +       0.991  * (normalized) word434
+ +       0.1717 * (normalized) word435
+ +      -0.4467 * (normalized) word436
+ +      -2.8174 * (normalized) word437
+ +      -0.4009 * (normalized) word438
+ +      -1.5528 * (normalized) word439
+ +      -0.651  * (normalized) word440
+ +      -0.4004 * (normalized) word441
+ +      -0.808  * (normalized) word442
+ +      -0.3293 * (normalized) word443
+ +      -0.1156 * (normalized) word444
+ +      -0.4998 * (normalized) word445
+ +      -1.1812 * (normalized) word446
+ +       1.2418 * (normalized) word447
+ +       0.0543 * (normalized) word448
+ +       0.0325 * (normalized) word449
+ +       0.9978 * (normalized) word450
+ +      -0.8841 * (normalized) word451
+ +      -0.1186 * (normalized) word452
+ +       0.3521 * (normalized) word453
+ +      -1.7336 * (normalized) word454
+ +       3.3013 * (normalized) word455
+ +      -1.5853 * (normalized) word456
+ +      -2.2733 * (normalized) word457
+ +       2.5414 * (normalized) word458
+ +       0.1811 * (normalized) word459
+ +      -1.0993 * (normalized) word460
+ +      -0.7362 * (normalized) word461
+ +      -1.4771 * (normalized) word462
+ +      -0.1564 * (normalized) word463
+ +       0.6249 * (normalized) word464
+ +      -0.0759 * (normalized) word465
+ +      -1.6501 * (normalized) word466
+ +      -0.6664 * (normalized) word467
+ +      -0.514  * (normalized) word468
+ +      -0.528  * (normalized) word469
+ +      -0.026  * (normalized) word470
+ +       1.2357 * (normalized) word471
+ +      -0.4583 * (normalized) word472
+ +       0.1906 * (normalized) word473
+ +       0.1683 * (normalized) word474
+ +      -0.5126 * (normalized) word475
+ +      -0.5619 * (normalized) word476
+ +      -0.5162 * (normalized) word477
+ +       3.3051 * (normalized) word478
+ +       1.4976 * (normalized) word479
+ -       0.1695
+
+Number of kernel evaluations: 1179192777 (24.026% cached)
+
+
+
+Time taken to build model: 2502.57 seconds
+
+=== Evaluation on test split ===
+
+Time taken to test model on training split: 0.55 seconds
+
+=== Summary ===
+
+Correctly Classified Instances        3856               77.7733 %
+Incorrectly Classified Instances      1102               22.2267 %
+Kappa statistic                          0.5552
+Mean absolute error                      0.2223
+Root mean squared error                  0.4715
+Relative absolute error                 44.4549 %
+Root relative squared error             94.2933 %
+Total Number of Instances             4958     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.801    0.246    0.770      0.801    0.785      0.556    0.777     0.717     POSITIVE
+                 0.754    0.199    0.787      0.754    0.770      0.556    0.777     0.715     NEGATIVE
+Weighted Avg.    0.778    0.223    0.778      0.778    0.778      0.556    0.777     0.716     
+
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+ 2010  500 |    a = POSITIVE
+  602 1846 |    b = NEGATIVE
+
