@@ -1,0 +1,50 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.J48 -C 0.25 -M 2
+Relation:     Movie Reviews
+Instances:    49579
+Attributes:   480
+              [list of attributes omitted]
+Test mode:    split 70.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+J48 pruned tree
+------------------
+
+
+Number of Leaves  : 	5210
+
+Size of the tree : 	10419
+
+
+Time taken to build model: 328.47 seconds
+
+=== Evaluation on test split ===
+
+Time taken to test model on training split: 0.56 seconds
+
+=== Summary ===
+
+Correctly Classified Instances        9382               63.0765 %
+Incorrectly Classified Instances      5492               36.9235 %
+Kappa statistic                          0.2615
+Mean absolute error                      0.3718
+Root mean squared error                  0.5886
+Relative absolute error                 74.3695 %
+Root relative squared error            117.7224 %
+Total Number of Instances            14874     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.631    0.370    0.631      0.631    0.631      0.262    0.626     0.594     POSITIVE
+                 0.630    0.369    0.631      0.630    0.630      0.262    0.626     0.583     NEGATIVE
+Weighted Avg.    0.631    0.369    0.631      0.631    0.631      0.262    0.626     0.588     
+
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+ 4700 2743 |    a = POSITIVE
+ 2749 4682 |    b = NEGATIVE
+

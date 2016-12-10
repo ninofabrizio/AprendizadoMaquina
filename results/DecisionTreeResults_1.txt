@@ -1,0 +1,41 @@
+
+=== Classifier model (full training set) ===
+
+J48 pruned tree
+------------------
+
+Number of Leaves  : 	5210
+
+Size of the tree : 	10419
+
+
+Time taken to build model: 223.77 seconds
+
+=== Evaluation on test split ===
+
+Time taken to test model on training split: 0.15 seconds
+
+=== Summary ===
+
+Correctly Classified Instances        3148               63.4933 %
+Incorrectly Classified Instances      1810               36.5067 %
+Kappa statistic                          0.27  
+Mean absolute error                      0.3706
+Root mean squared error                  0.5875
+Relative absolute error                 74.1171 %
+Root relative squared error            117.4936 %
+Total Number of Instances             4958     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.628    0.358    0.643      0.628    0.635      0.270    0.624     0.597     POSITIVE
+                 0.642    0.372    0.627      0.642    0.635      0.270    0.624     0.576     NEGATIVE
+Weighted Avg.    0.635    0.365    0.635      0.635    0.635      0.270    0.624     0.587     
+
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+ 1576  934 |    a = POSITIVE
+  876 1572 |    b = NEGATIVE
+
